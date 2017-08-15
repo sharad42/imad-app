@@ -19,4 +19,4 @@ button.onclick = function () {
  
  request.open('GET','http://sharadpandey42.imad.hasura-app.io/counter',true);
  request.send(null);
-}
+};
