@@ -1,35 +1,3 @@
-.quote{
-  padding:20px;
-  background:white;
-  margin:45px 30px 20px 30px;
-  border:2px solid white;
-  border-radius:7px;
-  font-family: 'PT Sans', sans-serif;
-  font-style:italic;
-  font-size:25px;
-  color:#db255e;
-}
-
-body{
-  background:#1a4219;
-  
-}
-
-.butt{
-  margin-left:320px;
-  margin-right:70px;
-}
-
-.Butt{
-  margin:10px 10px 10px 10px;
-}
-
-.author{
-  margin:45px 10px 10px 450px;
-}
-h1{
-  text-align:center;
-  color:orange;
-  font-family:Lobster, Monospace;
-  margin-top:10px;
+.center{
+    margin:0 70 0 70;
 }
