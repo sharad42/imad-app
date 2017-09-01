@@ -60,11 +60,25 @@ app.post('/login', function(req, res){
     var password = req.body.password;
     
    
-   pool.query('INSERT INTO "user" (user_name, password) VALUES ($1, $2)',[user_name,dbstring], function(err, result){
+   pool.query('SELECT * FROM  "user" user_name = $1',[user_name], function(err, result){
       if(err){
             res.status(500).send(err.toString());
         }else{
-            res.send('user crated successfully');
+            if(res.rows.length === 0){
+                res.send(403).send('Username/Password Incorrect');
+            }
+            else{
+                var dbString = result.row[0].password;
+                var salt = dbString.split('@')[2];
+                var hashedPassword = hash(password, salt);
+                if (hashedPassword === dbString){
+                    res.send('Credentials are correct');
+                }else{
+                     res.send(403).send('Username/Password Incorrect');
+                }
+                
+            }
+           
         }
        
    });
