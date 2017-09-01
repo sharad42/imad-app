@@ -62,7 +62,7 @@ app.post('/login', function(req, res){
    
    pool.query('SELECT * FROM  "user" WHERE user_name = $1',[user_name], function(err, result){
       if(err){
-            res.status(500).send(err.toString());
+            res.status(400).send(err.toString());
         }else{
             if(res.rows.length === 0){
                 res.send(403).send('Username/Password Incorrect');
