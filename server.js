@@ -55,6 +55,22 @@ app.post('/create-user',function(req, res){
     
 });
 
+app.post('/login', function(req, res){
+    var user_name = req.body.user_name;
+    var password = req.body.password;
+    
+   
+   pool.query('INSERT INTO "user" (user_name, password) VALUES ($1, $2)',[user_name,dbstring], function(err, result){
+      if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send('user crated successfully');
+        }
+       
+   });
+    
+});
+
 var counter = 0;
 app.get('/counter',function(req,res){
    counter = counter + 1;
@@ -76,6 +92,8 @@ app.get('/db-test',function(req,res){
     });
     
 });
+
+
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
